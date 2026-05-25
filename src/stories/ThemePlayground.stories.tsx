@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { OrderDetailScreen } from "@/components/ds/enterprise-screens";
 
 type Hsl = { h: number; s: number; l: number };
 
@@ -289,102 +291,132 @@ function Playground() {
           <header>
             <h1 className="text-2xl font-bold">Theme Playground</h1>
             <p className="mt-1 text-muted-foreground">
-              Zobacz jak design.juz.pl wygląda w Twoich kolorach. Skopiuj CSS na dole i wklej do
+              Zobacz jak design.juz.pl wygląda w Twoich kolorach. Przełącz zakładki, żeby zobaczyć
+              atomy lub pełen ekran zamówienia. CSS na dole wklejasz do
               <code className="mx-1 rounded bg-muted px-1.5 py-0.5 font-mono text-xs">src/styles/globals.css</code>
               w swoim projekcie.
             </p>
           </header>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Buttons</CardTitle>
-              <CardDescription>Warianty bazowe — primary, secondary, outline, ghost, destructive.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-3">
-              <Button>Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="destructive">Destructive</Button>
-              <Button variant="link">Link</Button>
-            </CardContent>
-          </Card>
+          <Tabs defaultValue="order-basic" className="w-full">
+            <TabsList className="flex flex-wrap">
+              <TabsTrigger value="atoms">Atomy</TabsTrigger>
+              <TabsTrigger value="order-basic">Zamówienie: dane</TabsTrigger>
+              <TabsTrigger value="order-shipping">Zamówienie: wysyłka</TabsTrigger>
+              <TabsTrigger value="order-billing">Zamówienie: rozliczenie</TabsTrigger>
+            </TabsList>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Badges &amp; statusy</CardTitle>
-              <CardDescription>Tokeny statusów: success, warning, destructive.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
-              <Badge>Primary</Badge>
-              <Badge variant="secondary">Secondary</Badge>
-              <Badge variant="outline">Outline</Badge>
-              <Badge variant="destructive">Destructive</Badge>
-              <span className="inline-flex items-center gap-1 rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--success))]">
-                <Check className="h-3 w-3" /> Success
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--warning))]">
-                <TriangleAlert className="h-3 w-3" /> Warning
-              </span>
-            </CardContent>
-          </Card>
+            <TabsContent value="atoms" className="space-y-6 pt-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Buttons</CardTitle>
+                  <CardDescription>Warianty bazowe — primary, secondary, outline, ghost, destructive.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-wrap gap-3">
+                  <Button>Primary</Button>
+                  <Button variant="secondary">Secondary</Button>
+                  <Button variant="outline">Outline</Button>
+                  <Button variant="ghost">Ghost</Button>
+                  <Button variant="destructive">Destructive</Button>
+                  <Button variant="link">Link</Button>
+                </CardContent>
+              </Card>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Form</CardTitle>
-                <CardDescription>Input, label, ring focus.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="space-y-1.5">
-                  <Label htmlFor="demo-email">Email</Label>
-                  <Input id="demo-email" placeholder="ty@firma.pl" />
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="demo-pass">Hasło</Label>
-                  <Input id="demo-pass" type="password" placeholder="••••••••" />
-                </div>
-                <Button className="w-full">Zaloguj się</Button>
-              </CardContent>
-            </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Badges &amp; statusy</CardTitle>
+                  <CardDescription>Tokeny statusów: success, warning, destructive.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-wrap gap-2">
+                  <Badge>Primary</Badge>
+                  <Badge variant="secondary">Secondary</Badge>
+                  <Badge variant="outline">Outline</Badge>
+                  <Badge variant="destructive">Destructive</Badge>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--success))]">
+                    <Check className="h-3 w-3" /> Success
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--warning))]">
+                    <TriangleAlert className="h-3 w-3" /> Warning
+                  </span>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Alerty &amp; tony</CardTitle>
-                <CardDescription>Soft warianty kolorów statusu.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-start gap-3 rounded-md bg-primary-soft p-3 text-sm">
-                  <Info className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--primary))]" />
-                  <div>
-                    <p className="font-medium text-[hsl(var(--primary))]">Informacja</p>
-                    <p className="text-muted-foreground">Tokeny zmieniają się od razu.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 rounded-md bg-success-soft p-3 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--success))]" />
-                  <div>
-                    <p className="font-medium text-[hsl(var(--success))]">Sukces</p>
-                    <p className="text-muted-foreground">Operacja zakończona.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 rounded-md bg-warning-soft p-3 text-sm">
-                  <Bell className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--warning))]" />
-                  <div>
-                    <p className="font-medium text-[hsl(var(--warning))]">Ostrzeżenie</p>
-                    <p className="text-muted-foreground">Sprawdź ustawienia.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 rounded-md bg-destructive-soft p-3 text-sm">
-                  <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--destructive))]" />
-                  <div>
-                    <p className="font-medium text-[hsl(var(--destructive))]">Błąd</p>
-                    <p className="text-muted-foreground">Nie udało się zapisać.</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+              <div className="grid gap-6 md:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Form</CardTitle>
+                    <CardDescription>Input, label, ring focus.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="demo-email">Email</Label>
+                      <Input id="demo-email" placeholder="ty@firma.pl" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="demo-pass">Hasło</Label>
+                      <Input id="demo-pass" type="password" placeholder="••••••••" />
+                    </div>
+                    <Button className="w-full">Zaloguj się</Button>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Alerty &amp; tony</CardTitle>
+                    <CardDescription>Soft warianty kolorów statusu.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-start gap-3 rounded-md bg-primary-soft p-3 text-sm">
+                      <Info className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--primary))]" />
+                      <div>
+                        <p className="font-medium text-[hsl(var(--primary))]">Informacja</p>
+                        <p className="text-muted-foreground">Tokeny zmieniają się od razu.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 rounded-md bg-success-soft p-3 text-sm">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--success))]" />
+                      <div>
+                        <p className="font-medium text-[hsl(var(--success))]">Sukces</p>
+                        <p className="text-muted-foreground">Operacja zakończona.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 rounded-md bg-warning-soft p-3 text-sm">
+                      <Bell className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--warning))]" />
+                      <div>
+                        <p className="font-medium text-[hsl(var(--warning))]">Ostrzeżenie</p>
+                        <p className="text-muted-foreground">Sprawdź ustawienia.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 rounded-md bg-destructive-soft p-3 text-sm">
+                      <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--destructive))]" />
+                      <div>
+                        <p className="font-medium text-[hsl(var(--destructive))]">Błąd</p>
+                        <p className="text-muted-foreground">Nie udało się zapisać.</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="order-basic" className="pt-4">
+              <div className="overflow-hidden rounded-lg border bg-background">
+                <OrderDetailScreen mode="basic" />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="order-shipping" className="pt-4">
+              <div className="overflow-hidden rounded-lg border bg-background">
+                <OrderDetailScreen mode="shipping" />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="order-billing" className="pt-4">
+              <div className="overflow-hidden rounded-lg border bg-background">
+                <OrderDetailScreen mode="billing" />
+              </div>
+            </TabsContent>
+          </Tabs>
 
           <Card>
             <CardHeader>
