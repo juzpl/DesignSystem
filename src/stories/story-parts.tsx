@@ -2216,7 +2216,7 @@ function DateRangeInputDemo() {
 
 function BarChartAtomDemo() {
   return (
-    <div className="w-[540px] max-w-full">
+    <div className="w-full">
       <DsBarChart
         data={[
           { label: "Pn", value: 42 },
@@ -2234,7 +2234,7 @@ function BarChartAtomDemo() {
 
 function LineChartAtomDemo() {
   return (
-    <div className="w-[540px] max-w-full">
+    <div className="w-full">
       <DsLineChart
         data={[
           { label: "Pn", value: 52 },

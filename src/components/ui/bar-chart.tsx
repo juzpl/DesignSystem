@@ -51,7 +51,7 @@ const BarChart = ({
     );
 
   return (
-    <ChartContainer config={chartConfig} className={cn("h-64 w-full", className)}>
+    <ChartContainer config={chartConfig} className={cn("aspect-auto h-64 w-full", className)}>
       <RechartsBarChart data={data}>
         {hideGrid ? null : <CartesianGrid vertical={false} />}
         {hideAxis ? null : (
