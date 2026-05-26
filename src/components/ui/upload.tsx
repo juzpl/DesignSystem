@@ -62,7 +62,10 @@ const Upload = React.forwardRef<HTMLDivElement, UploadProps>(
             isDragActive && "border-primary bg-primary-soft text-primary"
           )}
         >
-          <input {...getInputProps()} />
+          <input
+            {...getInputProps()}
+            aria-label={typeof label === "string" ? label : "Dodaj pliki"}
+          />
           <UploadCloud className="size-8 text-muted-foreground" />
           <div className="text-sm font-semibold">{label}</div>
           <div className="text-xs text-muted-foreground">{hint}</div>

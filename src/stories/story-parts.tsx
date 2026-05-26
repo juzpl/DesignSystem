@@ -503,7 +503,7 @@ function WeekWorkstationsView() {
           <atoms.Calendar />
           <p className="mt-4 rounded-md bg-muted p-3 text-center text-sm font-semibold text-muted-foreground">Brak bieżących alertów</p>
         </aside>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" role="region" aria-label="Kalendarz stanowisk" tabIndex={0}>
           <div className="min-w-[920px]">
             <div className="grid grid-cols-[72px_repeat(5,minmax(170px,1fr))] border-b bg-muted/35">
               <div className="border-r p-3" />

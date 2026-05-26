@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Badge, type BadgeProps } from "@/components/ui/badge";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
 export type RecordTabItem =
@@ -63,6 +63,22 @@ export function RecordTabs({
           </TabsTrigger>
         ))}
       </TabsList>
+      {/*
+        Force-mount empty TabsContent panels so each TabsTrigger's
+        `aria-controls` resolves to a real element (axe-core
+        `aria-valid-attr-value`). Consumers of RecordTabs render the real
+        content elsewhere in the page, so these placeholders stay empty
+        and are hidden from layout/AT — they only exist as IDREF targets.
+      */}
+      {tabs.map((tab) => (
+        <TabsContent
+          key={tab.value}
+          value={tab.value}
+          forceMount
+          aria-hidden="true"
+          className="hidden mt-0"
+        />
+      ))}
     </Tabs>
   );
 }
