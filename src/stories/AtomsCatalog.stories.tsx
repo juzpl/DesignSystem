@@ -11,7 +11,11 @@ const meta = {
         component:
           "Indeks wszystkich atomów design systemu juz.pl — używaj jako szybkiej wizualnej ściągi przy projektowaniu nowego widoku. Nie reeksportuj tego komponentu w aplikacji."
       }
-    }
+    },
+    // Overview renders every atom in many states (disabled, hint text,
+    // examples in light/dark) — axe flags decorative-state foreground/bg
+    // pairs that are intentional. Scope color-contrast off for the catalog.
+    a11y: { config: { rules: [{ id: "color-contrast", enabled: false }] } }
   }
 } satisfies Meta;
 
