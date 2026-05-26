@@ -17,7 +17,7 @@ const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
       {...props}
     >
       {leading ? (
-        <div className="flex select-none items-center bg-muted px-3 text-muted-foreground">
+        <div className="flex select-none items-center border-r bg-muted/40 px-3 text-muted-foreground">
           {leading}
         </div>
       ) : null}
@@ -25,7 +25,7 @@ const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
         {children}
       </div>
       {trailing ? (
-        <div className="flex select-none items-center bg-muted px-3 text-muted-foreground">
+        <div className="flex select-none items-stretch border-l [&>button]:rounded-none [&>button]:border-0 [&>button]:shadow-none">
           {trailing}
         </div>
       ) : null}
