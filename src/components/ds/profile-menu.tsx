@@ -60,7 +60,7 @@ function ProfileMenu({
         <button
           type="button"
           className={cn(
-            "flex items-center gap-2 rounded-full p-1 pr-2 text-left transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "flex items-center gap-2 rounded-full p-1 pr-2 text-left transition-colors hover:bg-muted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             className
           )}
           aria-label="Menu profilu"

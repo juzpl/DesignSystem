@@ -238,7 +238,7 @@ function DataTablePagination<TData>({
         <label className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
           Wyników na stronie
           <select
-            className="h-10 rounded-md border border-border bg-card px-3 font-bold text-foreground shadow-juz-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="h-10 rounded-md border border-border bg-card px-3 font-bold text-foreground shadow-juz-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
             onChange={(event) => table.setPageSize(Number(event.target.value))}
             value={pageSize}
           >

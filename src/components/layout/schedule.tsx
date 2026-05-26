@@ -276,7 +276,7 @@ function ScheduleEventChip({
         </p>
         {event.status ? (
           <Badge
-            className="shrink-0 px-1.5 py-0 text-[10px]"
+            className="shrink-0 px-1.5 py-0 text-[10px] leading-5"
             variant={statusToneMap[event.status]}
           >
             {event.status}
@@ -570,7 +570,7 @@ function ScheduleMonthView({
                     }
                     type="button"
                   >
-                    <span className="font-mono text-[10px] text-muted-foreground">
+                    <span className="font-mono text-[10px] leading-5 text-muted-foreground">
                       {formatTime(event.start)}
                     </span>{" "}
                     {event.title}

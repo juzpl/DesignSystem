@@ -13,7 +13,6 @@
   "files": [
     "dist",
     "src",
-    "tailwind.config.ts",
     "components.json"
   ],
   "exports": {
@@ -29,8 +28,7 @@
     "./styles.css": {
       "default": "./dist/styles.css"
     },
-    "./styles.source.css": "./src/styles/globals.css",
-    "./tailwind.config": "./tailwind.config.ts"
+    "./styles.source.css": "./src/styles/globals.css"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -109,16 +107,16 @@
     "@storybook/react-vite": "8.6.18",
     "@storybook/test": "^8.6.15",
     "@storybook/test-runner": "^0.22.1",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
     "playwright": "^1.60.0",
     "postcss": "^8.4.49",
     "start-server-and-test": "^2.1.5",
     "storybook": "8.6.18",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.3.0",
     "typescript": "^5.7.2",
     "vite": "^6.0.7",
     "vite-plugin-dts": "^5.0.1"

@@ -127,7 +127,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         <div className="hidden flex-1 justify-center md:flex">
           <button
             aria-label="Otwórz wyszukiwarkę globalną"
-            className="group flex h-10 w-full max-w-md items-center gap-3 rounded-md border border-border bg-background px-3 text-sm text-muted-foreground shadow-juz-sm transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group flex h-10 w-full max-w-md items-center gap-3 rounded-md border border-border bg-background px-3 text-sm text-muted-foreground shadow-juz-sm transition-colors hover:border-primary/50 hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
             onClick={onSearch}
             type="button"
           >
@@ -160,7 +160,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             </IconActionButton>
             {notifications && notifications > 0 ? (
               <Badge
-                className="pointer-events-none absolute -right-1 -top-1 min-w-5 justify-center px-1.5 py-0 text-[10px]"
+                className="pointer-events-none absolute -right-1 -top-1 min-w-5 justify-center px-1.5 py-0 text-[10px] leading-5"
                 variant="destructive"
               >
                 {notifications > 99 ? "99+" : notifications}
@@ -171,7 +171,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             <DropdownMenuTrigger asChild>
               <button
                 aria-label="Menu profilu"
-                className="flex items-center gap-2 rounded-md p-1 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="flex items-center gap-2 rounded-md p-1 transition-colors hover:bg-muted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
                 type="button"
               >
                 <Avatar className="size-9">
@@ -192,7 +192,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                 </div>
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="min-w-[14rem]">
+            <DropdownMenuContent align="end" className="min-w-56">
               <DropdownMenuLabel>
                 <div className="flex flex-col">
                   <span className="font-bold">{user.name}</span>

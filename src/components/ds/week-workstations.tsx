@@ -162,7 +162,7 @@ const WeekWorkstations = React.forwardRef<HTMLDivElement, WeekWorkstationsProps>
                                     key={ev.id ?? evIndex}
                                     type="button"
                                     onClick={ev.onClick}
-                                    className="block w-full rounded-md text-left transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                                    className="block w-full rounded-md text-left transition-colors hover:bg-muted/40 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                                   >
                                     {content}
                                   </button>

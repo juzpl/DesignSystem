@@ -21,7 +21,7 @@ const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
           {leading}
         </div>
       ) : null}
-      <div className="flex flex-1 items-center [&>input]:border-0 [&>input]:bg-transparent [&>input]:shadow-none [&>input]:focus-visible:ring-0 [&>input]:focus-visible:ring-offset-0">
+      <div className="flex flex-1 items-center [&>input]:border-0 [&>input]:bg-transparent [&>input]:shadow-none focus-visible:[&>input]:ring-0 focus-visible:[&>input]:ring-offset-0">
         {children}
       </div>
       {trailing ? (

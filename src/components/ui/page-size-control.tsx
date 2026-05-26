@@ -47,7 +47,7 @@ const PageSizeControl = React.forwardRef<HTMLDivElement, PageSizeControlProps>(
         onValueChange={(v) => onValueChange(Number(v))}
         disabled={disabled}
       >
-        <SelectTrigger className="h-9 w-auto min-w-[7rem] gap-2" aria-label={label}>
+        <SelectTrigger className="h-9 w-auto min-w-28 gap-2" aria-label={label}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

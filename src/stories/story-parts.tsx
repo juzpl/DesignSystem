@@ -212,7 +212,7 @@ const atomDocCopy: Record<string, { description: string; features: string[]; usa
   },
   Input: {
     description: "Pole tekstowe dla formularzy, filtrów i wyszukiwania.",
-    features: ["spójna wysokość z buttonami", "czytelny focus ring", "placeholder i disabled w tokenach DS"],
+    features: ["spójna wysokość z buttonami", "czytelny focus ring-3", "placeholder i disabled w tokenach DS"],
     usage: '<Input placeholder="Nazwa produktu" />',
     props: [["type", "HTMLInputTypeAttribute", "Typ pola"], ["placeholder", "string", "Tekst pomocniczy"], ["disabled", "boolean", "Stan nieaktywny"]]
   },
@@ -2429,7 +2429,7 @@ export const atoms = {
     </div>
   ),
   PhoneFrame: () => (
-    <div className="w-[340px] rounded-[2rem] border-[10px] border-foreground bg-background p-4 shadow-juz-lg">
+    <div className="w-[340px] rounded-4xl border-10 border-foreground bg-background p-4 shadow-juz-lg">
       <div className="mx-auto mb-4 h-6 w-28 rounded-full bg-foreground" />
       <Card className="bg-primary p-5 text-primary-foreground">
         <p className="text-sm font-bold uppercase tracking-[0.16em] opacity-80">Dziś</p>

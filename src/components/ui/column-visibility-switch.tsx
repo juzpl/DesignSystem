@@ -55,7 +55,7 @@ const ColumnVisibilitySwitch = React.forwardRef<
             {triggerLabel}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align={align} className="min-w-[14rem]">
+        <DropdownMenuContent align={align} className="min-w-56">
           <DropdownMenuLabel>{label}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {columns.map((column) => (

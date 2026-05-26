@@ -13,7 +13,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     className={cn(
-      "flex h-12 w-full items-center justify-between rounded-md border border-input bg-card px-4 py-2 text-left text-sm font-semibold text-foreground shadow-juz-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-12 w-full items-center justify-between rounded-md border border-input bg-card px-4 py-2 text-left text-sm font-semibold text-foreground shadow-juz-sm transition-colors placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
       "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
       className
     )}
@@ -63,7 +63,7 @@ const SelectContent = React.forwardRef<
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       className={cn(
-        "relative z-50 max-h-80 min-w-[8rem] overflow-hidden rounded-lg border bg-card text-card-foreground shadow-juz",
+        "relative z-50 max-h-80 min-w-32 overflow-hidden rounded-lg border bg-card text-card-foreground shadow-juz",
         position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         className
       )}
@@ -72,7 +72,7 @@ const SelectContent = React.forwardRef<
       {...props}
     >
       <SelectScrollUpButton />
-      <SelectPrimitive.Viewport className={cn("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]")}>
+      <SelectPrimitive.Viewport className={cn("p-1", position === "popper" && "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)")}>
         {children}
       </SelectPrimitive.Viewport>
       <SelectScrollDownButton />
@@ -99,7 +99,7 @@ const SelectItem = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Item
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-none focus:bg-primary-soft focus:text-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-hidden focus:bg-primary-soft focus:text-primary data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     ref={ref}

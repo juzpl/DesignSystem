@@ -35,11 +35,11 @@ function Calendar({
         month_grid: "w-full border-collapse space-y-1",
         weekdays: "flex",
         weekday:
-          "text-muted-foreground rounded-md w-9 font-normal text-[0.75rem]",
+          "text-muted-foreground rounded-md w-9 font-normal text-[0.75rem] leading-[1.5]",
         week: "flex w-full mt-2",
         day: cn(
           "relative p-0 text-center text-sm focus-within:relative focus-within:z-20",
-          "[&:has([aria-selected])]:bg-primary-soft",
+          "has-aria-[selected]:bg-primary-soft",
           "[&:has([aria-selected].day-range-end)]:rounded-r-md",
           "[&:has([aria-selected].day-outside)]:bg-primary-soft/40"
         ),
@@ -58,6 +58,10 @@ function Calendar({
           "aria-selected:bg-primary-soft aria-selected:text-foreground",
         hidden: "invisible",
         ...classNames,
+      }}
+      modifiersClassNames={{
+        selected:
+          "[&_button]:bg-primary [&_button]:text-primary-foreground [&_button]:hover:bg-primary [&_button]:hover:text-primary-foreground [&_button]:focus:bg-primary [&_button]:focus:text-primary-foreground",
       }}
       components={{
         Chevron: ({ orientation, ...iconProps }: any) =>

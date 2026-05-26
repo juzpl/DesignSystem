@@ -84,7 +84,7 @@ export function PlainTimeline({ items }: { items: PlainTimelineItem[] }) {
     <ol className="relative space-y-6 pl-8 before:absolute before:left-3 before:top-3 before:h-[calc(100%-24px)] before:w-px before:bg-border">
       {items.map(({ title, meta, description }) => (
         <li className="relative" key={`${title}-${meta}`}>
-          <span className="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-background">
+          <span className="absolute left-[-31px] top-1 grid size-6 place-items-center rounded-full bg-background">
             <span className="size-4 rounded-full bg-primary" />
           </span>
           <strong className="block text-lg leading-tight">{title}</strong>

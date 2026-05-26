@@ -19,7 +19,7 @@ const ContextMenuSubTrigger = React.forwardRef<
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-md px-3 py-2 text-sm font-semibold outline-none focus:bg-primary-soft focus:text-primary data-[state=open]:bg-primary-soft data-[state=open]:text-primary",
+      "flex cursor-default select-none items-center rounded-md px-3 py-2 text-sm font-semibold outline-hidden focus:bg-primary-soft focus:text-primary data-[state=open]:bg-primary-soft data-[state=open]:text-primary",
       inset && "pl-8",
       className
     )}
@@ -38,7 +38,7 @@ const ContextMenuSubContent = React.forwardRef<
   <ContextMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[11rem] overflow-hidden rounded-lg border bg-card p-1 text-card-foreground shadow-juz",
+      "z-50 min-w-44 overflow-hidden rounded-lg border bg-card p-1 text-card-foreground shadow-juz",
       "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
       className
     )}
@@ -55,7 +55,7 @@ const ContextMenuContent = React.forwardRef<
     <ContextMenuPrimitive.Content
       ref={ref}
       className={cn(
-        "z-50 min-w-[13rem] overflow-hidden rounded-lg border bg-card p-1 text-card-foreground shadow-juz",
+        "z-50 min-w-52 overflow-hidden rounded-lg border bg-card p-1 text-card-foreground shadow-juz",
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
         className
       )}
@@ -74,7 +74,7 @@ const ContextMenuItem = React.forwardRef<
   <ContextMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold outline-none transition-colors focus:bg-primary-soft focus:text-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-default select-none items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold outline-hidden transition-colors focus:bg-primary-soft focus:text-primary data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-8",
       className
     )}
@@ -91,7 +91,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     ref={ref}
     checked={checked}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-none transition-colors focus:bg-primary-soft focus:text-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-hidden transition-colors focus:bg-primary-soft focus:text-primary data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     {...props}
@@ -114,7 +114,7 @@ const ContextMenuRadioItem = React.forwardRef<
   <ContextMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-none transition-colors focus:bg-primary-soft focus:text-primary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex cursor-default select-none items-center rounded-md py-2 pl-9 pr-3 text-sm font-semibold outline-hidden transition-colors focus:bg-primary-soft focus:text-primary data-disabled:pointer-events-none data-disabled:opacity-50",
       className
     )}
     {...props}
