@@ -1,5 +1,81 @@
 # Changelog
 
+## 1.2.1
+
+### Patch Changes
+
+- [#16](https://github.com/erp77flow/design.juz.pl/pull/16) [`f59386a`](https://github.com/erp77flow/design.juz.pl/commit/f59386ae86d0f0ad039e98c8ecc8d3bfd4ba15f6) Thanks [@erp77flow](https://github.com/erp77flow)! - Darken four light-mode color tokens so foreground text on every surface they paint on meets WCAG 2.1 AA contrast (≥4.5:1 for normal text). Dark-mode tokens are unchanged.
+
+  Before → after (HSL L%, hex, worst-case contrast ratio):
+
+  - `--muted-foreground` 54% `#78839b` (3.44:1 on bg-muted) → 44% `#5f6a81` (4.76:1 on bg-destructive-soft).
+  - `--destructive` 55% `#da3e5d` (3.78:1 on bg-destructive-soft, 4.35:1 white-on-bg) → 48% `#cd2748` (4.62:1 on soft, 5.28:1 white-on-bg).
+  - `--success` 41% `#3b9781` (3.22:1 on bg-success-soft, 3.58:1 on white) → 33% `#2f7967` (4.72:1 on soft, 5.18:1 on white).
+  - `--warning` 47% `#c69428` (2.53:1 on bg-warning-soft, 2.74:1 on white) → 33% `#8b681c` (4.80:1 on soft, 5.13:1 on white).
+
+  Removes 1,814 of the 1,840 axe `color-contrast` violations from `pnpm test:storybook:ci`. The 26 residual violations live in component-level opacity rules (calendar day-outside `text-foreground opacity-50`, primary button `opacity-80` overlays) and are out of scope for a token-only fix.
+
+- [#17](https://github.com/erp77flow/design.juz.pl/pull/17) [`037dfc6`](https://github.com/erp77flow/design.juz.pl/commit/037dfc6481453b9d00a4ed576c1bba0495c35984) Thanks [@erp77flow](https://github.com/erp77flow)! - Resolve non-color-contrast a11y violations surfaced by the axe-core
+  Storybook test runner.
+
+  Rules fixed (52 unique violations across 17 stories, ~104 with the
+  per-theme double-render):
+
+  - **aria-valid-attr-value (24)** — `Tabs` primitive now slugifies the
+    `value` prop before passing it to Radix so the generated
+    `aria-controls` IDs are valid HTML id tokens. `RecordTabs` and
+    `SegmentedTabs` additionally force-mount empty placeholder
+    `TabsContent` panels so each trigger's `aria-controls` resolves to a
+    real element in the DOM.
+  - **landmark-unique (18)** — `EnterpriseShell`, `SideModuleShell`,
+    `MobileNav` and `MobileProductionNav` now carry `aria-label`s; the
+    three mobile phone-frame stories pass a per-frame label so duplicate
+    `<nav>` landmarks are distinguishable.
+  - **scrollable-region-focusable (12)** — `Table` and `TablePrimitive`
+    wrappers, the order-table viewport in `ProductionOrdersListPattern`,
+    the calendar grids in `ProductionCalendarScreen` and
+    `WeekWorkstations` story, and the `ProcessStepper` row are now
+    `tabIndex={0}` so keyboard-only users can scroll them.
+  - **landmark-complementary-is-top-level (8)** — the `NoteRail` sidebar
+    in `OrderDetailScreen` is now a `role="group"` `<div>` instead of an
+    `<aside>` nested in `<main>`.
+  - **label (4)** — `ThemePlayground` hex `<Input>`s and the Upload
+    dropzone `<input>` now carry `aria-label`s.
+  - **dlitem (2)** — `<PreviewField>` rows in the orders preview are
+    wrapped in a `<dl>` parent.
+  - **nested-interactive (2)** — `DateFilter`'s clear affordance moved
+    from a child `role="button"` to a sibling `<button>` next to the
+    date trigger.
+  - **button-name (2)** — `Combobox` and `Autocomplete` triggers now
+    expose `aria-label` (selected label or placeholder) for axe's
+    combobox accessible-name check.
+  - **heading-order (2)** — h3s under the sr-only h1 in
+    `MobileOperatorShowcase` are now h2.
+
+  Components touched:
+  `Tabs`, `Table`, `TablePrimitive`, `RecordTabs`, `SegmentedTabs`,
+  `Autocomplete`, `Combobox`, `DateFilter`, `Upload`, `EnterpriseShell`,
+  `SideModuleShell`, `ProcessStepper`, `NoteRail`, `MobileNav`,
+  `MobileProductionNav`, `MobileOperatorShowcase`,
+  `ProductionCalendarScreen`, `ProductionOrdersListPattern`,
+  `ThemePlayground` story, `WeekWorkstations` story.
+
+- [#19](https://github.com/erp77flow/design.juz.pl/pull/19) [`bfa1fb4`](https://github.com/erp77flow/design.juz.pl/commit/bfa1fb4ce4f52150bc4dc914b1abdb36141c7dc3) Thanks [@erp77flow](https://github.com/erp77flow)! - Resolve the 26 residual axe-core `color-contrast` violations that survived the token darkening in the previous a11y patch. All 26 lived in component-level `opacity-*` utilities that washed the rendered foreground below WCAG 2.1 AA (≥4.5:1).
+
+  Three call sites touched, opacity replaced with explicit full-alpha colors:
+
+  - `src/components/ui/calendar.tsx` — outside-month days dropped `opacity-50` (which blended `--muted-foreground` to ~`#878a92` on a white card, 3.39:1 FAIL). Now styled with plain `text-muted-foreground` (5.43:1 on `#fdfdff`); visual de-emphasis comes from the existing `bg-primary-soft/40` parent and the muted-vs-foreground contrast. The `aria-selected:opacity-30` rule on outside days was removed for the same reason. `disabled` days keep `opacity-50` because react-day-picker sets the native `disabled` attribute, which axe-core's color-contrast rule already skips. Accounts for 16 of the 26 violations.
+  - `src/components/ds/auth-screens.tsx` — the AuthShell hero paragraph dropped `text-primary-foreground/80` (white at 80% alpha over `bg-primary` blends to `#e3d7fd`, 4.3:1 FAIL) for full-opacity `text-primary-foreground`. Accounts for 8 violations (one per Auth story × 4 stories × 2 light/dark themes).
+  - `src/stories/story-parts.tsx` PhoneFrame — "Dziś" hero label dropped `opacity-80` on inherited `text-primary-foreground`. Accounts for the remaining 2 violations (one per Catalog story × 2 themes).
+
+  After this PR, `pnpm test:storybook:ci` reports 0 axe `color-contrast` violations. Remaining axe failures are non-contrast (aria-valid-attr-value, label, button-name, landmark-\*, scrollable-region-focusable, nested-interactive) and are addressed separately in [#17](https://github.com/erp77flow/design.juz.pl/issues/17).
+
+- [#20](https://github.com/erp77flow/design.juz.pl/pull/20) [`a9d7a3b`](https://github.com/erp77flow/design.juz.pl/commit/a9d7a3b2d0201b6a05630052e061b7d456c1cf5b) Thanks [@erp77flow](https://github.com/erp77flow)! - Add two onboarding-focused documentation deliverables. `CONTRIBUTING.md` (root, Polish) covers setup with Playwright, branch and commit conventions, how to add a new component (atom/molecule/layout), the cva pattern, local test commands, the visual regression rebaseline flow (pull CI `visual-diff` artifact instead of recomputing PNGs locally), changesets policy (patch/minor/major), dark-mode token rules and a11y scoping. New Storybook page `Introduction / Components map` (at `src/stories/Components.Map.mdx`) renders a flat table of every shipped component with category, source path and link to its `?path=/docs/...` route — generated from `src/index.ts` and re-runnable via `node scripts/regen-component-map.mjs`.
+
+- [#14](https://github.com/erp77flow/design.juz.pl/pull/14) [`f90c3c6`](https://github.com/erp77flow/design.juz.pl/commit/f90c3c6ace318deab6bc55335d1983d667905e04) Thanks [@erp77flow](https://github.com/erp77flow)! - Add Polish-language component descriptions to every Storybook docs page.
+
+- [#18](https://github.com/erp77flow/design.juz.pl/pull/18) [`2cd346f`](https://github.com/erp77flow/design.juz.pl/commit/2cd346f8079cd651f08f5ec7aa4e8ebe33b5aeda) Thanks [@erp77flow](https://github.com/erp77flow)! - Add Storybook Introduction page and Foundations/Colors story (Polish-language). Introduction covers install, import, conventions, dark mode opt-in and versioning. Foundations/Colors renders every semantic color token (background, foreground, card, popover, primary/-soft, success/-soft, warning/-soft, destructive/-soft, info/-soft, muted, border, input, ring) as a swatch grid that reads live CSS variables, so the same story renders correctly in both light and dark modes via the theme toolbar.
+
 ## 1.2.0
 
 ### Minor Changes
