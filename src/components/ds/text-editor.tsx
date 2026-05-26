@@ -134,7 +134,7 @@ const TextEditor = React.forwardRef<HTMLDivElement, TextEditorProps>(
           }}
           style={{ minHeight }}
           className={cn(
-            "w-full px-3 py-3 text-sm leading-relaxed text-foreground outline-none",
+            "w-full px-3 py-3 text-sm leading-relaxed text-foreground outline-hidden",
             "empty:before:pointer-events-none empty:before:text-muted-foreground empty:before:content-[attr(data-placeholder)]",
             "[&_ul]:ml-6 [&_ul]:list-disc [&_ol]:ml-6 [&_ol]:list-decimal"
           )}

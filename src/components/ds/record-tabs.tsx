@@ -40,7 +40,7 @@ export function RecordTabs({
     <Tabs
       className={cn(
         "overflow-x-auto border-b bg-background/95",
-        sticky && "sticky top-0 z-30 shadow-juz-sm backdrop-blur",
+        sticky && "sticky top-0 z-30 shadow-juz-sm backdrop-blur-sm",
         className
       )}
       defaultValue={value === undefined ? initialValue : undefined}
@@ -56,7 +56,7 @@ export function RecordTabs({
           >
             {tab.label}
             {tab.badge ? (
-              <Badge className="ml-1 px-1.5 py-0.5 text-[10px]" variant={tab.badgeVariant ?? "destructive"}>
+              <Badge className="ml-1 px-1.5 py-0.5 text-[10px] leading-5" variant={tab.badgeVariant ?? "destructive"}>
                 {tab.badge}
               </Badge>
             ) : null}

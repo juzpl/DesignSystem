@@ -8,7 +8,7 @@ interface KbdProps extends React.HTMLAttributes<HTMLElement> {
 const Kbd = React.forwardRef<HTMLElement, KbdProps>(
   ({ className, size = "default", children, ...props }, ref) => {
     const sizes = {
-      sm: "h-5 min-w-5 px-1 text-[10px]",
+      sm: "h-5 min-w-5 px-1 text-[10px] leading-5",
       default: "h-6 min-w-6 px-1.5 text-xs",
       lg: "h-7 min-w-7 px-2 text-sm",
     };

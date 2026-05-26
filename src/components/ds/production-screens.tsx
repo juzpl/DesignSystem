@@ -431,7 +431,7 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 
 function MobileNav() {
   return (
-    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] font-bold text-muted-foreground">
+    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
       {[
         [FileText, "Zadania"],
         [Smartphone, "Skan"],

@@ -70,7 +70,7 @@ export function EnterpriseShell({
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b bg-card/95 px-4 backdrop-blur">
+      <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b bg-card/95 px-4 backdrop-blur-sm">
         <div className="flex items-center gap-2 border-r pr-4">
           <span className="grid size-9 place-items-center rounded-md bg-primary text-primary-foreground">
             <Sparkles className="size-5" />
@@ -622,7 +622,7 @@ export function MobileOperatorShowcase() {
 
 function MobileProductionNav() {
   return (
-    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] font-bold text-muted-foreground">
+    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
       {[
         [FileText, "Zadania"],
         [Smartphone, "Skan"],

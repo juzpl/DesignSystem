@@ -220,7 +220,7 @@ export function ColumnFilterPanel({
           <DataTableField label="Zawiera">
             {type === "select" ? (
               <select
-                className="h-11 w-full rounded-md border bg-card px-3 text-sm shadow-juz-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="h-11 w-full rounded-md border bg-card px-3 text-sm shadow-juz-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
                 value={value}
                 onChange={(event) => onValueChange?.(event.target.value)}
               >

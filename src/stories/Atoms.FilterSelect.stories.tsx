@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Wielokrotny select do filtrowania tabel: trigger, lista opcji z checkboxami, focus ring i stan wybranych wartości."
+          "Wielokrotny select do filtrowania tabel: trigger, lista opcji z checkboxami, focus ring-3 i stan wybranych wartości."
       }
     }
   }

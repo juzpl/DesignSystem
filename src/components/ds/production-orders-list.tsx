@@ -825,7 +825,7 @@ function PreviewField({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-md border bg-muted/25 p-3">
       <dt className="text-xs font-semibold text-muted-foreground">{label}</dt>
-      <dd className="mt-1 break-words font-bold">{value}</dd>
+      <dd className="mt-1 wrap-break-word font-bold">{value}</dd>
     </div>
   );
 }

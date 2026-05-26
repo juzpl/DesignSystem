@@ -59,7 +59,7 @@ const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
             aria-expanded={open}
             disabled={disabled}
             className={cn(
-              "flex h-11 w-full items-center justify-between gap-2 rounded-md border border-input bg-card px-3 py-2 text-sm font-semibold text-foreground shadow-juz-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+              "flex h-11 w-full items-center justify-between gap-2 rounded-md border border-input bg-card px-3 py-2 text-sm font-semibold text-foreground shadow-juz-sm transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
               !selected && "font-normal text-muted-foreground",
               className
             )}
@@ -71,7 +71,7 @@ const Combobox = React.forwardRef<HTMLButtonElement, ComboboxProps>(
           </button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[var(--radix-popover-trigger-width)] p-0"
+          className="w-(--radix-popover-trigger-width) p-0"
           align="start"
         >
           <Command>

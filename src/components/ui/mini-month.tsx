@@ -40,10 +40,10 @@ const MiniMonth = React.forwardRef<HTMLDivElement, MiniMonthProps>(
             caption_label: "text-xs font-semibold",
             nav: "hidden",
             weekday:
-              "text-muted-foreground rounded-md w-7 font-normal text-[0.65rem]",
+              "text-muted-foreground rounded-md w-7 font-normal text-[0.65rem] leading-[1.5]",
             day: cn(
               "relative p-0 text-center text-xs focus-within:relative focus-within:z-20 size-7",
-              "[&:has([aria-selected])]:bg-primary-soft"
+              "has-aria-[selected]:bg-primary-soft"
             ),
             day_button:
               "size-7 p-0 font-normal text-xs aria-selected:opacity-100 rounded-md hover:bg-muted",

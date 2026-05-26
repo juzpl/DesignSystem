@@ -60,7 +60,7 @@ const SearchableSelect = React.forwardRef<HTMLButtonElement, SearchableSelectPro
             disabled={disabled}
             aria-label={placeholder}
             className={cn(
-              "flex h-12 w-full items-center justify-between gap-2 rounded-md border border-input bg-card px-4 py-2 text-left text-sm font-semibold text-foreground shadow-juz-sm transition-colors focus:outline-none focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+              "flex h-12 w-full items-center justify-between gap-2 rounded-md border border-input bg-card px-4 py-2 text-left text-sm font-semibold text-foreground shadow-juz-sm transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
               className
             )}
           >
@@ -72,7 +72,7 @@ const SearchableSelect = React.forwardRef<HTMLButtonElement, SearchableSelectPro
         </PopoverTrigger>
         <PopoverContent
           align="start"
-          className={cn("w-[--radix-popover-trigger-width] p-0", contentClassName)}
+          className={cn("w-(--radix-popover-trigger-width) p-0", contentClassName)}
         >
           <Command>
             <CommandInput placeholder={searchPlaceholder} />

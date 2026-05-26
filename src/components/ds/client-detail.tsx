@@ -1054,7 +1054,7 @@ function HeaderMeta({ label, className, children }: { label: string; className?:
   return (
     <div className={cn("flex min-h-28 min-w-0 flex-col gap-1 bg-card p-5 text-sm", className)}>
       <p className="juz-label">{label}</p>
-      <div className="flex min-w-0 flex-col gap-1 text-foreground [&_strong]:break-words [&_span]:break-words [&_span]:text-muted-foreground">{children}</div>
+      <div className="flex min-w-0 flex-col gap-1 text-foreground [&_strong]:wrap-break-word [&_span]:wrap-break-word [&_span]:text-muted-foreground">{children}</div>
     </div>
   );
 }
@@ -1092,7 +1092,7 @@ function FieldGrid({ fields }: { fields: string[][] }) {
       {fields.map(([label, value]) => (
         <div key={label}>
           <dt className="text-sm text-muted-foreground">{label}</dt>
-          <dd className="mt-1 break-words text-sm font-semibold">{value}</dd>
+          <dd className="mt-1 wrap-break-word text-sm font-semibold">{value}</dd>
         </div>
       ))}
     </dl>
@@ -1127,7 +1127,7 @@ function MapPanel() {
         <p className="mt-1 font-mono text-sm text-muted-foreground">53.12350, 18.00840</p>
       </div>
       <div className="relative h-72 bg-primary-soft">
-        <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(hsl(var(--border))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border))_1px,transparent_1px)] [background-size:32px_32px]" />
+        <div className="absolute inset-0 opacity-70 bg-[linear-gradient(hsl(var(--border))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border))_1px,transparent_1px)] bg-size-[32px_32px]" />
         <div className="absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-juz">
           <MapPin className="size-7" />
         </div>
