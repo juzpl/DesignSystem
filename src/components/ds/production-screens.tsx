@@ -251,7 +251,7 @@ export function ProductionCalendarScreen() {
               <Button variant="outline">Zmiana <ChevronDown /></Button>
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto" role="region" aria-label="Kalendarz produkcji — wtorek 24.05.2026" tabIndex={0}>
             <div className="min-w-[1080px]">
               <div className="grid grid-cols-[72px_repeat(5,minmax(190px,1fr))] border-b bg-muted/45">
                 <div className="border-r p-3" />

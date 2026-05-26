@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 
 export function SegmentedTabs({
@@ -38,6 +38,16 @@ export function SegmentedTabs({
           </TabsTrigger>
         ))}
       </TabsList>
+      {/* See RecordTabs for rationale — placeholder panels for aria-controls. */}
+      {items.map((item) => (
+        <TabsContent
+          key={item}
+          value={item}
+          forceMount
+          aria-hidden="true"
+          className="hidden mt-0"
+        />
+      ))}
     </Tabs>
   );
 }

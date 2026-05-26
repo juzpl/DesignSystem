@@ -74,6 +74,7 @@ const Autocomplete = React.forwardRef<HTMLButtonElement, AutocompleteProps>(
             type="button"
             role="combobox"
             aria-expanded={open}
+            aria-label={selected?.label ?? placeholder}
             disabled={disabled}
             className={cn(
               "flex h-11 w-full items-center justify-between gap-2 rounded-md border border-input bg-card px-3 py-2 text-sm text-foreground shadow-juz-sm transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
