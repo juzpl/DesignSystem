@@ -63,25 +63,32 @@ let snapped = 0;
 const failed = [];
 
 for (const id of storyIds) {
-  const url = `${BASE_URL}/iframe.html?id=${id}&viewMode=story`;
   try {
-    await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
-    // Wait until the story root has children — Storybook injects them
-    // asynchronously after the iframe boots.
-    await page
-      .waitForFunction(
-        () => {
-          const el = document.getElementById("storybook-root");
-          return el && el.children.length > 0;
-        },
-        { timeout: 15000 }
-      )
-      .catch(() => {});
-    await page.waitForTimeout(SETTLE_MS);
-    await page.screenshot({
-      path: resolve(OUT_DIR, `${id}.png`),
-      fullPage: true,
-    });
+    // Snap each story twice — once in the default (light) theme and once
+    // with the `dark` class applied to <html>. addon-themes wires this via
+    // `?globals=theme:<name>` but toggling the class directly is more
+    // robust against Storybook URL-handling changes.
+    for (const theme of ["light", "dark"]) {
+      const url = `${BASE_URL}/iframe.html?id=${id}&viewMode=story`;
+      await page.goto(url, { waitUntil: "networkidle", timeout: 30000 });
+      await page
+        .waitForFunction(
+          () => {
+            const el = document.getElementById("storybook-root");
+            return el && el.children.length > 0;
+          },
+          { timeout: 15000 }
+        )
+        .catch(() => {});
+      await page.evaluate((t) => {
+        document.documentElement.classList.toggle("dark", t === "dark");
+      }, theme);
+      await page.waitForTimeout(SETTLE_MS);
+      await page.screenshot({
+        path: resolve(OUT_DIR, `${id}.${theme}.png`),
+        fullPage: true,
+      });
+    }
     snapped++;
     if (snapped % 10 === 0) console.log(`  [${snapped}/${storyIds.length}]`);
   } catch (e) {
