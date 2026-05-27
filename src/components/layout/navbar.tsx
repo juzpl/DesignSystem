@@ -39,6 +39,7 @@ export interface NavbarProps
   logo?: React.ReactNode;
   title?: React.ReactNode;
   breadcrumbs?: NavbarBreadcrumb[];
+  nav?: React.ReactNode;
   user: NavbarUser;
   notifications?: number;
   searchPlaceholder?: string;
@@ -66,6 +67,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       logo,
       title,
       breadcrumbs,
+      nav,
       user,
       notifications,
       searchPlaceholder = "Szukaj w aplikacji...",
@@ -123,6 +125,12 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             </div>
           ) : null}
         </div>
+
+        {nav ? (
+          <nav aria-label="Główna nawigacja" className="hidden items-center md:flex">
+            {nav}
+          </nav>
+        ) : null}
 
         <div className="hidden flex-1 justify-center md:flex">
           <button
