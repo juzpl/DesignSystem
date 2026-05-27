@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+### Minor Changes
+
+- [#24](https://github.com/erp77flow/design.juz.pl/pull/24) [`4f7cf2a`](https://github.com/erp77flow/design.juz.pl/commit/4f7cf2aa57416ec0b9c2ab8f22ec23b5563bff6d) Thanks [@erp77flow](https://github.com/erp77flow)! - Add `NewClientPattern` screen under `Screens / Records / NewClient` — pattern for creating a company record with header (Szkic + save dropdown), section nav, view/edit Dane firmy section, shipping addresses list + editor, commercial section, GUS/VIES registry data, KSeF, role/type checkboxes and right rail with map + validation summary.
+
 ## 1.2.2
 
 ### Patch Changes
