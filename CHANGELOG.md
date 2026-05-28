@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- [#36](https://github.com/juzpl/DesignSystem/pull/36) [`19d15d8`](https://github.com/juzpl/DesignSystem/commit/19d15d810c9cd45145979ed3282399195a5fe8a2) Thanks [@juzpl](https://github.com/juzpl)! - Table: nowy opcjonalny prop `wrapperClassName` na zewnętrznym kontenerze `<div>` (gdzie `Table` trzyma scroll/border/shadow/radius). Pozwala wyłączyć wewnętrzną ramkę, gdy `Table` siedzi już w `Card` (typowy efekt „tabela w tabeli" z podwójną kreską). Domyślne wartości bez zmian — backward compatible.
+
+### Patch Changes
+
+- [#36](https://github.com/juzpl/DesignSystem/pull/36) [`19d15d8`](https://github.com/juzpl/DesignSystem/commit/19d15d810c9cd45145979ed3282399195a5fe8a2) Thanks [@juzpl](https://github.com/juzpl)! - NativeSelect: dodane `bg-none`, żeby wyłączyć globalną regułę `select:not([multiple]) { background-image: ... }` z `globals.css` — komponent renderował dwie strzałki naraz (Lucide `ChevronDown` + SVG z CSS). Teraz pozostaje tylko themowana ikona Lucide.
+
+- [#36](https://github.com/juzpl/DesignSystem/pull/36) [`19d15d8`](https://github.com/juzpl/DesignSystem/commit/19d15d810c9cd45145979ed3282399195a5fe8a2) Thanks [@juzpl](https://github.com/juzpl)! - NewClient: górny pasek (Wróć / ikona / tytuł / Anuluj / Zapisz firmę) wyrównany do góry (`items-start`) — wszystkie elementy na wysokości linii „Nowa firma", zgodnie z wzorcem `DetailHeader` z ekranu PZDocument. Dotyczy obu wariantów: `joined` (domyślnego) i `split`.
+
+- [#36](https://github.com/juzpl/DesignSystem/pull/36) [`19d15d8`](https://github.com/juzpl/DesignSystem/commit/19d15d810c9cd45145979ed3282399195a5fe8a2) Thanks [@juzpl](https://github.com/juzpl)! - ProductionOrdersList: wyłączona wewnętrzna ramka `Table` (`wrapperClassName="rounded-none border-0 bg-transparent shadow-none"`) — znika efekt „tabela w tabeli", podwójna kreska nad/pod wierszem nagłówka i niedopasowane zaokrąglenia po lewej/prawej.
+
+- [#36](https://github.com/juzpl/DesignSystem/pull/36) [`19d15d8`](https://github.com/juzpl/DesignSystem/commit/19d15d810c9cd45145979ed3282399195a5fe8a2) Thanks [@juzpl](https://github.com/juzpl)! - SortableColumnHeader: tło pod ikonami ↑/↓/filtr ma teraz `rounded-md` zamiast `rounded-full` — bez efektu pigułki w nagłówku tabeli; dotyczy też DataTablePattern.
+
 ## 0.2.0
 
 ### Minor Changes
