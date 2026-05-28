@@ -155,7 +155,7 @@ export function SortableColumnHeader({
   return (
     <div className={cn("flex items-center gap-2", align === "right" && "justify-end")}>
       <span>{label}</span>
-      <div className="inline-flex h-8 overflow-hidden rounded-full border bg-background shadow-juz-sm">
+      <div className="inline-flex h-8 overflow-hidden rounded-md border bg-background shadow-juz-sm">
         <button
           className={cn("grid w-8 place-items-center text-muted-foreground hover:text-primary", active && direction === "asc" && "bg-primary text-primary-foreground")}
           type="button"

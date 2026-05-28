@@ -1,12 +1,22 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
-  ({ className, ...props }, ref) => (
+type TableProps = React.HTMLAttributes<HTMLTableElement> & {
+  wrapperClassName?: string;
+};
+
+const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  ({ className, wrapperClassName, ...props }, ref) => (
     // tabIndex=0 keeps the horizontally-scrolling wrapper keyboard reachable
     // (axe-core `scrollable-region-focusable`). The table itself remains the
     // landmark via its `<table>` role.
-    <div className="w-full overflow-auto rounded-lg border bg-card shadow-juz-sm" tabIndex={0}>
+    <div
+      className={cn(
+        "w-full overflow-auto rounded-lg border bg-card shadow-juz-sm",
+        wrapperClassName
+      )}
+      tabIndex={0}
+    >
       <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
     </div>
   )
