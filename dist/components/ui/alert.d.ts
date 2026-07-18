@@ -1,0 +1,11 @@
+import { VariantProps } from 'class-variance-authority';
+import * as React from "react";
+declare const alertVariants: (props?: ({
+    variant?: "default" | "success" | "warning" | "destructive" | "info" | null | undefined;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string;
+declare const Alert: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
+    variant?: "default" | "success" | "warning" | "destructive" | "info" | null | undefined;
+} & import('class-variance-authority/types').ClassProp) | undefined) => string> & React.RefAttributes<HTMLDivElement>>;
+declare const AlertTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLHeadingElement> & React.RefAttributes<HTMLParagraphElement>>;
+declare const AlertDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+export { Alert, AlertTitle, AlertDescription, alertVariants };

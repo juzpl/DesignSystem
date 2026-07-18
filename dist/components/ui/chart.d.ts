@@ -1,0 +1,64 @@
+import * as React from "react";
+import * as RechartsPrimitive from "recharts";
+declare const THEMES: {
+    readonly light: "";
+    readonly dark: ".dark";
+};
+export type ChartConfig = {
+    [k in string]: {
+        label?: React.ReactNode;
+        icon?: React.ComponentType;
+    } & ({
+        color?: string;
+        theme?: never;
+    } | {
+        color?: never;
+        theme: Record<keyof typeof THEMES, string>;
+    });
+};
+declare const ChartContainer: React.ForwardRefExoticComponent<Omit<React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement> & {
+    config: ChartConfig;
+    children: React.ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>["children"];
+}, "ref"> & React.RefAttributes<HTMLDivElement>>;
+declare const ChartStyle: ({ id, config }: {
+    id: string;
+    config: ChartConfig;
+}) => import("react/jsx-runtime").JSX.Element | null;
+declare const ChartTooltip: typeof RechartsPrimitive.Tooltip;
+declare const ChartTooltipContent: React.ForwardRefExoticComponent<Omit<Omit<RechartsPrimitive.DefaultTooltipContentProps<RechartsPrimitive.TooltipValueType, import('recharts/types/component/DefaultTooltipContent').NameType>, "label" | "viewBox" | "active" | "payload" | "coordinate" | "accessibilityLayer"> & {
+    active?: boolean;
+    allowEscapeViewBox?: import('recharts/types/util/types').AllowInDimension;
+    animationDuration?: import('recharts/types/util/types').AnimationDuration;
+    animationEasing?: import('recharts/types/util/types').AnimationTiming;
+    axisId?: RechartsPrimitive.AxisId;
+    content?: import('recharts/types/component/Tooltip').ContentType<RechartsPrimitive.TooltipValueType, import('recharts/types/component/DefaultTooltipContent').NameType> | undefined;
+    contentStyle?: React.CSSProperties;
+    cursor?: import('recharts/types/component/Cursor').CursorDefinition;
+    defaultIndex?: number | RechartsPrimitive.TooltipIndex;
+    filterNull?: boolean;
+    formatter?: ((value: RechartsPrimitive.TooltipValueType, name: import('recharts/types/component/DefaultTooltipContent').NameType, item: import('recharts/types/state/tooltipSlice').TooltipPayloadEntry, index: number, payload: RechartsPrimitive.TooltipPayload) => React.ReactNode | [React.ReactNode, React.ReactNode]) | undefined;
+    includeHidden?: boolean | undefined;
+    isAnimationActive?: boolean | "auto";
+    itemSorter?: RechartsPrimitive.TooltipItemSorter;
+    itemStyle?: React.CSSProperties;
+    labelFormatter?: (label: any, payload: RechartsPrimitive.TooltipPayload) => React.ReactNode;
+    labelStyle?: React.CSSProperties;
+    offset?: number | RechartsPrimitive.Coordinate;
+    payloadUniqBy?: import('recharts/types/util/payload/getUniqPayload').UniqueOption<import('recharts/types/state/tooltipSlice').TooltipPayloadEntry>;
+    portal?: HTMLElement | null;
+    position?: Partial<RechartsPrimitive.Coordinate>;
+    reverseDirection?: import('recharts/types/util/types').AllowInDimension;
+    separator?: string;
+    shared?: boolean;
+    trigger?: import('recharts/types/chart/types').TooltipTrigger;
+    useTranslate3d?: boolean;
+    wrapperStyle?: React.CSSProperties;
+} & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement> & {
+    hideLabel?: boolean;
+    hideIndicator?: boolean;
+    indicator?: "line" | "dot" | "dashed";
+    labelKey?: string;
+    nameKey?: string;
+}, "ref"> & React.RefAttributes<HTMLDivElement>>;
+declare const ChartLegend: React.MemoExoticComponent<(outsideProps: RechartsPrimitive.LegendProps) => React.ReactPortal | null>;
+export { ChartContainer, ChartTooltip, ChartTooltipContent, ChartLegend, ChartStyle, };
