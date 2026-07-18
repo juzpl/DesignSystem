@@ -72,6 +72,35 @@ Tytuł PR-a = tytuł najważniejszego commita. W body wpisz:
 CI automatycznie sprawdza: build, build-storybook, size-limit, axe a11y i
 visual regression. Wszystko musi być zielone przed merge.
 
+## Wydanie dla konsumentów git-dep (WAŻNE — czytaj przy każdym wydaniu)
+
+Ten Design System bywa konsumowany **jako zależność git** (np. projekt `lipert`:
+`"@juz/design-system": "github:juzpl/DesignSystem#vX.Y.Z"`), a **nie** przez publikację npm.
+Stąd dwie rzeczy, o których trzeba pamiętać przy **każdym** wydaniu:
+
+1. **Zbudowany `dist/` jest COMMITOWANY do repo** (wymuszony `git add -f dist`, bo `dist` jest
+   w `.gitignore`). Skrypt **`prepare` został usunięty** (od `v0.3.2`), więc konsument git-dep
+   **nie przebudowuje** paczki przy instalacji — używa dołączonego `dist/`. Dzięki temu nie
+   wpadamy w błędy **TS2742** przy generowaniu `.d.ts` na runnerach CI (isolated `node_modules`),
+   które gubiły eksporty komponentów (Button/Badge/Spinner/Alert…) u konsumenta.
+
+2. **Przy wydaniu MUSISZ ręcznie przebudować i dołączyć `dist/`:**
+   ```bash
+   pnpm build:lib                       # kompletny dist (wymaga node-linker=hoisted z .npmrc)
+   git add -f dist package.json
+   git commit -m "release vX.Y.Z: <opis>"
+   git tag vX.Y.Z
+   git push origin main --tags
+   ```
+   Następnie w projekcie konsumującym podbij pin `#vX.Y.Z` i zrób `pnpm install`.
+   ⚠️ **Jeśli zapomnisz zbudować/dołączyć `dist`, konsumenci dostaną stare/niepełne typy.**
+
+3. **`.npmrc` = `node-linker=hoisted`** jest potrzebny, by `build:lib` generował **przenośne**
+   typy (płaskie `node_modules` → bez TS2742). **Nie usuwaj go.**
+
+**Docelowo** (żeby nie commitować `dist`): rozważyć publikację paczki do rejestru
+(GitHub Packages / npm) i konsumpcję po wersji zamiast po tagu git.
+
 ## Jak dodać nowy komponent
 
 Najpierw sprawdź **Introduction / Components map** w Storybooku — jeżeli
